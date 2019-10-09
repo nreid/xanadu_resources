@@ -6,7 +6,7 @@ When you submit a job to the SLURM job scheduler on the Xanadu cluster, you must
 
 Why should you care? Why not just copy the same SLURM header from script to script and only worry about it when a job fails? 
 
-Xanadu is a community resource. X users submit Y jobs per month. There can sometimes be a significant wait for jobs to begin running. Submitting jobs with inaccurate resource requests can tie it up unencessarily and cause problems with job scheduling, wait times and time to completion.
+Xanadu is a community resource. X users submit Y jobs per month. There can sometimes be a significant wait for jobs to begin running. Submitting jobs with inaccurate resource requests can tie things up unnecessarily and cause problems with job scheduling, wait times and time to completion.
 
 - When you run a job and request too many resources:
 	- When the cluster is busy, wait times are unnecessarily extended for everyone. If you only need 1 CPU but request 30, 29 CPUs will sit idly. 
