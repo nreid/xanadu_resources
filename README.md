@@ -19,9 +19,11 @@ Xanadu is a community resource. X users submit Y jobs per month. There can somet
 
 ## How do I decide what to request? 
 
-Ok, now that you're 100% convinced that for your benefit and the benefit of the Xanadu community, you need to try your best to accurately tailor your resource requests for each job, how are you supposed to do that? 
+Ok, now that you're 100% convinced that for the benefit of yourself and the entire Xanadu community you need to try your best to accurately tailor your resource requests for each job, how are you supposed to do that? 
 
-Well, the answer to this _can_ get complicated, but for most common use-cases in bioinformatics, it really isn't. Here is a typical slurm header:
+Well, the answer to this _can_ get complicated, but for most common use-cases in bioinformatics, it really isn't. 
+
+To start with, here is a typical slurm header which specifies the details of a job submission:
 
 ```bash
 #!/bin/bash 
@@ -38,7 +40,7 @@ Well, the answer to this _can_ get complicated, but for most common use-cases in
 #SBATCH -e %x_%j.err
 ```
 
-There are five lines in there that you should consider for **every job you submit** that control the resources requested:
+There are five lines in there that control the resources requested. You should consider their settings for **every job you submit**. 
 
 ```bash
 #SBATCH -n 1
@@ -51,7 +53,7 @@ There are five lines in there that you should consider for **every job you submi
 
 ### The number of tasks
 
-`-n`: The number of _tasks_. A single number. These are tasks to be scheduled by SLURM and you invoke them using the SLURM command `srun`. They aren't lines in your script, or anything else like that. This option only applies if you use `srun` more than once within the script you submit using `sbatch`. If you don't use `srun` more than once, or at all, leave this at 1, or leave it out. 
+`-n`: The number of _tasks_ you will run. A single number. These are tasks to be scheduled by SLURM and you invoke them using the SLURM command `srun`. They aren't lines in your script, or anything else like that. This option only applies if you use `srun` more than once within the script you submit using `sbatch`. If you don't use `srun` more than once, or at all, leave this at 1, or leave it out. 
 
 ### The number of nodes
 
