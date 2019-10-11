@@ -1,6 +1,6 @@
 # How many (and which) resources should I request?
 
-When you submit a job to the SLURM job scheduler on the Xanadu cluster, you must specify how many resources (nodes, cpus, memory) you need and which partition to submit to. But how to decide? This document will give new users some brief guidance. 
+When you submit a job to the SLURM job scheduler on the Xanadu cluster, you must specify how many resources (nodes, cpus, memory) you need and which partition to submit to. But how to decide? This document will give new users some brief guidance. For more in-depth information on using the Xanadu cluster, see [here](https://bioinformatics.uconn.edu/resources-and-events/tutorials-2/xanadu/).
 
 ## What are the consequences of asking for the wrong resources? 
 
@@ -97,11 +97,11 @@ There aren't hard limits on memory usage, so your process may start using more m
 
 ### The partition
 
-`--partition`: The _partition_ you are requesting. The nodes on the Xanadu cluster are partitioned into sets with different characteristics. You can see these using `sinfo` which lists sets and their membership. You will notice these sets are overlapping. Most jobs will run on the "general" partition. Though you may specifically need xeon processors (e.g. for variant calling using GATK) or to use nodes with higher memory for memory-intensive tasks such as genome assembly. The most important thing here is not to submit to `himem` unless you're sure you need a very large amount of memory (> 256gb). 
+`--partition`: The _partition_ you are requesting. The nodes on the Xanadu cluster are partitioned into sets with different characteristics. You can see these using `sinfo` which lists the sets and their membership. You will notice these sets are overlapping. Most jobs will run on the "general" partition. Some jobs may have specific requirements that require you to use other partitions. One example of this is variant calling with GATK; it is much slower on amd processors. So to avoid having a GATK run assigned to one of these processors you would use `--partition=xeon`. Memory intensive tasks (those requiring more than 256gb of memory) will need to be submitted to one of the high memory partitions. 
 
 ### The quality of service
 
-`--qos`: 
+`--qos`: Each partition has an associated quality of service. If you submit to the general, amd or xeon partitions you should set `--qos=general`. If you submit to the himem partitions you should set `--qos=himem`. For a listing of partitions and qualities of service see [here](https://bioinformatics.uconn.edu/resources-and-events/tutorials-2/xanadu/#Xanadu_5). 
 
 ## After the job finishes: did you request the right resources?
 
